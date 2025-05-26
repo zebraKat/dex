@@ -31,7 +31,7 @@ string commandString;
 void main(string[] args) {
     enableRawMode();
  
-    if (args[1]) {
+    if (args.length > 1) {
         session.fromString(files.openFile(args[1]));
         session.currentFile = args[1];
     }
