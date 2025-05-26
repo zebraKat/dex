@@ -30,7 +30,11 @@ string commandString;
 
 void main(string[] args) {
     enableRawMode();
-
+ 
+    if (args[1]) {
+        session.fromString(files.openFile(args[1]));
+        session.currentFile = args[1];
+    }
 
     char input;
 
@@ -54,7 +58,8 @@ void main(string[] args) {
                 if (input == '$') {session.cursor['x'] = session.lines[session.cursor['y']].length;} else
                 if (input == '0') {session.cursor['x'] = 0;} else
                 if (input == 'i') {session.currentMode = Mode.INSERT;} else
-                if (input == ':') {session.currentMode = Mode.COMMAND;}
+                if (input == ':') {session.currentMode = Mode.COMMAND;} else 
+                if (input == 'd') {session.lines[session.cursor['y']] = new char[0];}
             } else if (session.currentMode == Mode.INSERT) {
                 if (input == '\033') { session.currentMode = Mode.NORMAL; } else 
                 if (input == '\177') { session.log = "BACKSPACE RPESSED"; session.backSpace(); } else
