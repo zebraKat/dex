@@ -1,0 +1,6 @@
+name "dex"
+description "vim inspired text editor"
+authors "zebrakat"
+copyright "Copyright © 2025, zebrakat"
+license "Apache-2.0"
+targetPath "./bin/"
